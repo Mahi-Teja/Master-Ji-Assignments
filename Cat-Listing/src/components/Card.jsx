@@ -11,7 +11,7 @@ export const Card = ({ data }) => {
   // };
   //   console.log(data);
   return (
-    <section className="Card flex flex-col flex-nowrap min-w-full md:min-w-[375px]  relative pb-3 rounded-xl m-4 shadow-md bg-white">
+    <section className="Card flex flex-col flex-nowrap min-w-full md:min-w-[375px]  relative pb-3 rounded-xl mx-4 shadow-md bg-white">
       <div className="img h-[16rem] rounded-t-lg  overflow-hidden">
         <img
           className="h-full w-full min-w-fit object-cover"
