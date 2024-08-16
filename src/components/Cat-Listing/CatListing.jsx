@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Card } from "./Card";
 import axios from "axios";
+import { ChaiCodeLogo } from "../ChaiCodeLogo";
 
 // https://api.freeapi.app/api/v1/public/cats?page=1&limit=4
 export const CatListing = () => {
@@ -15,10 +16,11 @@ export const CatListing = () => {
       const CatsUrl = `https://api.freeapi.app/api/v1/public/cats?page=${page}&limit=4`;
       const response = await axios.get(CatsUrl);
       const data = response.data.data.data;
-
+      // setTimeout(() => {
       setHaveMore(response?.data?.data?.nextPage);
       setCats((pre) => [...pre, ...data]);
-      console.log("data: ", data);
+      // }, 10000);
+      // console.log("data: ", data);
     } catch (error) {
       console.log("something went wrong");
     } finally {
@@ -29,7 +31,7 @@ export const CatListing = () => {
   const handleScroll = () => {
     if (currentScroll.current) {
       const { scrollLeft, scrollWidth, clientWidth } = currentScroll.current;
-      if (scrollLeft + clientWidth >= scrollWidth - 200) {
+      if (scrollLeft + clientWidth >= scrollWidth - 10) {
         if (!loading && haveMore) {
           const nextPage = Math.ceil(cats.length / 4) + 1;
           Catss(nextPage);
@@ -50,16 +52,25 @@ export const CatListing = () => {
     };
   }, [cats, loading, haveMore]);
 
-  console.log(cats);
+  // console.log(cats);
 
   return (
-    <div className="max-h-screen scroll-smooth py-3  bg-slate-600">
-      {/* <div className="text-4xl text-white p-3">Cats Around us</div> */}
-      <div ref={currentScroll} className="flex overflow-auto h-[80%">
-        {cats.length &&
-          cats.map((cat, i) => {
-            return <Card key={i} data={cat} loading={loading} />;
-          })}
+    <div className="h-screen scroll-smooth bg-[#00000067] overflow-hidden catsBg backdrop:opacity-50">
+      <div className=" bg-dimmed   "></div>
+      {/* <div className="bd-dimmed h-full"></div> */}
+      <div className="md:text-[3rem] max-h-fit text-xl font-bold z-10 relative px-3 m-3 text-[#ffffff]">
+        Cats around us
+      </div>
+
+      <div className="absolute right-4 top-3 z-20">
+        <ChaiCodeLogo />
+      </div>
+      <div ref={currentScroll} className="flex overflow-x-auto p-5 h-full">
+        {cats?.length
+          ? cats.map((cat, i) => {
+              return <Card key={i} data={cat} loading={loading} />;
+            })
+          : loading && <div className=" translate-x-1/2">loading...</div>}
       </div>
     </div>
   );

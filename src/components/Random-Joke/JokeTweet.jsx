@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { ChaiCodeLogo } from "./ChaiCodeLogo";
+import { ChaiCodeLogo } from "../ChaiCodeLogo";
+import "../../assets/jokebg.png";
 
 // "https://api.freeapi.app/api/v1/public/randomjokes/joke/random"
 
@@ -90,8 +91,8 @@ export const JokeTweet = () => {
   }, []);
 
   return (
-    <main className="flex justify-center h-screen items-center relative tweetBg">
-      <section className="max-w-lg m-px bg-black rounded-xl p-6 text-white">
+    <main className="flex justify-center h-screen items-center relative tweetBg  ">
+      <section className="w-[40rem] m-px bg-black rounded-xl p-6 font-inter  text-white">
         <nav className="flex items-center ">
           <div className="p-2">
             <svg
@@ -114,9 +115,11 @@ export const JokeTweet = () => {
         </nav>
         <Profile />
         {/* Joke */}
-        <div className="text-sm w-full m-2">{joke}</div>
+        <div className="text-sm lg:text-xl w-full py-2 m-2">
+          {!joke ? <p className="text-center ">Loading...</p> : joke}
+        </div>
         {/* timestamp */}
-        <section className="flex text-[#71767B] p-2 text-[10px]">
+        <section className="flex text-[#71767B] p-2 text-[10px] md:text-sm">
           <div className="mx-1">{date.time}</div>
           <p>·</p>
 
@@ -135,7 +138,9 @@ export const JokeTweet = () => {
           <p className=""> © chai aur code</p>
         </footer>
       </section>
-      <ChaiCodeLogo />
+      <div className="absolute right-4 bottom-14">
+        <ChaiCodeLogo />
+      </div>
     </main>
   );
 };
@@ -144,14 +149,14 @@ const Profile = () => {
   return (
     <section className="flex text-xs m-1">
       <img
-        className="h-10 w-10 mx-1 object-cover rounded-full"
+        className="h-10 w-10 md:h-14 md:w-14 mx-1 object-cover rounded-full"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbI3NcVlpsW3HwnkmkQbM3BmaWoAjlhN35fQ&s"
         alt="elon-profile-pic"
         srcSet=""
       />
       <section>
         <div className="flex items-center justify-center text-sm font-semibold">
-          <div className=" mx-1">Elon Musk</div>
+          <div className=" mx-1 md:text-xl">Elon Musk</div>
           <div>
             <svg
               width="14"
@@ -173,7 +178,7 @@ const Profile = () => {
             </svg>
           </div>
         </div>
-        <p className="text-[#71767B] mx-1">@elonmusk</p>
+        <p className="text-[#71767B] mx-1 md:text-lg">@elonmusk</p>
       </section>
     </section>
   );
@@ -181,7 +186,7 @@ const Profile = () => {
 
 const Analytics = ({ analytics }) => {
   return (
-    <section className="flex justify-evenly items-center text-[8px] text-[#71767B] border-t border-b border-b-[#71767B] border-t-[#71767B] p-3">
+    <section className="flex justify-evenly items-center text-[8px] md:text-sm text-[#71767B] border-t border-b border-b-[#71767B] border-t-[#71767B] p-3">
       {/* comments */}
       <div className="flex items-center justify-center">
         <svg
