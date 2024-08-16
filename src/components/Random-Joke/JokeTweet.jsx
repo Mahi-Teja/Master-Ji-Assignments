@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ChaiCodeLogo } from "../ChaiCodeLogo";
-import "../../assets/jokebg.png";
 
 // "https://api.freeapi.app/api/v1/public/randomjokes/joke/random"
 

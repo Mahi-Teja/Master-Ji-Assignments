@@ -51,7 +51,7 @@ function UserCard() {
 
   return (
     <main className="bg-[#B6B3F3] px-6 h-screen flex flex-col items-center">
-      <div className="    w-[32rem]">
+      <div className="    md:w-[32rem]">
         <nav className=" p-3">
           <ul className="flex justify-between items-center">
             <li>
