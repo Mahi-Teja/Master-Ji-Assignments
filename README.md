@@ -16,9 +16,9 @@ To get started with the project locally, follow these steps:
 
 1. **Clone the repository:**
 
-   ```
-   git clone https://github.com/mahi-teja/Master-Ji-Assignments.git
-   ```
+```
+ git clone https://github.com/mahi-teja/Master-Ji-Assignments.git
+```
 
 2. **Navigate into the project directory:**
 ```
